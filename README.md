@@ -1,2 +1,5 @@
 # cxi2elf
-Converts cxi to elf. Python3. Public domain.
+Converts cxi to elf. No external dependencies. Python3. Public domain.
+
+## use
+cxi2elf.py filename
