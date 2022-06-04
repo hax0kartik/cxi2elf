@@ -79,7 +79,7 @@ def decompress_code(code: bytes):
 
     return bytes(dec)
 
-if len(sys.argv) is not 2:
+if len(sys.argv) != 2:
     print("{} filename".format(sys.argv[0]))
     exit(-1)
 f = open(sys.argv[1], "rb")
@@ -127,11 +127,14 @@ if code_size == 0:
 
 f.seek(exefs_offset + code_offset, 0)
 code_comp = f.read(code_size)
-if is_compressed is 1:
+code = 0
+if is_compressed == 1:
     code = decompress_code(code_comp)
     if code == -1:
         print("Failure while decompressing code.bin. Aborting.")
         exit(-1)
+else:
+    code = code_comp
 
 print("Decompressed code size: {}".format(len(code)))
 code = io.BytesIO(code)
